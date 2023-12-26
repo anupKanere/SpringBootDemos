@@ -25,6 +25,7 @@ public class Aspects {
 
 	@Before(value = "execution(* com.app.controller.*.*(..))")
 	public void beforeAspect(JoinPoint joinPoint) {
+		System.out.println("Inside Before Aspect");
 		System.out.println("called" + joinPoint.getSignature() + "method ");
 		log.info("called method");
 
@@ -50,7 +51,7 @@ public class Aspects {
 		return result;
 	}
 
-	@AfterReturning(value = "execution( * com.app.service.*.*(..))", returning = "emp")
+	@AfterReturning(value = "execution( * com.app.controller.*.*(..))", returning = "emp")
 	public void afterReturning(JoinPoint joinPoint, Employee emp) {
 		System.out.println("Inside afterReturning aspect " + new Date());
 	}
